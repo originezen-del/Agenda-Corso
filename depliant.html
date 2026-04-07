@@ -240,12 +240,14 @@ body {
 .inc-items li {
   font-size: 14px;
   color: #4a2000;
+  font-style: normal;
   padding: 3px 0 3px 16px;
   position: relative;
   line-height: 1.45;
   font-weight: 300;
 }
 
+.inc-items li em { font-style: italic; }
 .inc-items li::before {
   content: '›';
   position: absolute;
@@ -314,7 +316,8 @@ body {
   align-items: flex-start;
 }
 
-#s3 .pci-dot {
+#s3 .pci-text em { font-style: italic; }
+.pci-dot {
   width: 7px; height: 7px;
   min-width: 7px;
   border-radius: 50%;
@@ -325,6 +328,7 @@ body {
 #s3 .pci-text {
   font-size: 15px;
   color: #2a1200;
+  font-style: normal;
   line-height: 1.5;
   font-weight: 400;
 }
