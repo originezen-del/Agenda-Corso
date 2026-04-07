@@ -534,10 +534,12 @@ body {
     height: 100vh;
     border-radius: 0;
     box-shadow: none;
-    page-break-after: always;
-    break-after: page;
     display: block;
     position: relative;
+  }
+  .slide:not(:last-child) {
+    page-break-after: always;
+    break-after: page;
   }
   .slide * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
@@ -582,7 +584,7 @@ body {
     <div class="middle">
       <div class="eyebrow">Un percorso per genitori</div>
       <div class="title">Crescere<br>insieme</div>
-      <div class="subtitle">Ritrovare il filo con tuo figlio adolescente — in modo concreto, senza troppe teorie</div>
+      <div class="subtitle">Ritrovare il filo con tuo figlio adolescente<br><br>Facciamo insieme un pezzo di strada, lavorando in modo concreto.</div>
     </div>
     <div class="bottom">
       <div class="for-label">Per genitori di ragazzi</div>
@@ -646,7 +648,7 @@ body {
       </div>
       <div class="pci-item">
         <div class="pci-dot"></div>
-        <div class="pci-text">Vuoi strumenti concreti, non teorie astratte</div>
+        <div class="pci-text">Vuoi lavorare in modo concreto. Per capire.</div>
       </div>
       <div class="pci-item">
         <div class="pci-dot"></div>
