@@ -116,6 +116,20 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 .bnav-item.active .bnav-icon svg{stroke:var(--teal);}
 .bnav-item .bnav-icon svg{stroke:var(--dim);transition:stroke 0.12s;}
 .empty-log{font-size:13px;color:var(--dim);padding:16px 0;text-align:center;}
+--coral:#e07010;--coral-dim:rgba(224,112,16,0.13);
+.bnav-item.active-coral .bnav-label{color:var(--coral);}
+.bnav-item.active-coral .bnav-icon svg{stroke:var(--coral);}
+.dep-form-label{font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--coral);text-transform:uppercase;margin:16px 0 6px;}
+.dep-field{width:100%;background:var(--card);border:1px solid var(--border2);border-radius:var(--r-sm);color:var(--text);font-family:"DM Sans",sans-serif;font-size:14px;padding:10px 12px;outline:none;margin-bottom:2px;}
+.dep-field:focus{border-color:var(--coral);}
+.dep-field::placeholder{color:var(--dim);}
+.dep-preview{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-top:4px;margin-bottom:12px;}
+.dep-preview-label{font-size:10px;font-weight:600;letter-spacing:0.1em;color:var(--dim);text-transform:uppercase;margin-bottom:8px;}
+.dep-preview-row{font-size:13px;color:var(--muted);margin-bottom:4px;}
+.dep-preview-row span{color:var(--coral);font-weight:500;}
+.btn-coral{background:var(--coral-dim);border:1px solid rgba(224,112,16,0.35);color:var(--coral);font-family:"DM Sans",sans-serif;font-size:14px;font-weight:600;padding:13px;border-radius:var(--r);width:100%;cursor:pointer;transition:background 0.12s;}
+.btn-coral:active{background:rgba(224,112,16,0.25);}
+.dep-note{font-size:11px;color:var(--dim);margin-top:8px;text-align:center;line-height:1.5;}
 </style>
 </head>
 <body>
@@ -303,6 +317,36 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
   </div>
 </div>
 
+
+<!-- DEPLIANT -->
+<div class="content" id="screen-depliant">
+  <div class="section-label" style="margin-top:16px">Personalizza il depliant</div>
+
+  <div class="claude-strip" style="background:rgba(224,112,16,0.08);border-color:rgba(224,112,16,0.2);">
+    <div class="claude-label" style="color:var(--coral)">Depliant · Crescere insieme</div>
+    <div style="font-size:13px;color:var(--muted);line-height:1.6;">Compila i campi qui sotto e premi <strong style="color:var(--coral)">Apri depliant</strong> — si aprirà già compilato, pronto per lo screenshot.</div>
+  </div>
+
+  <div class="dep-form-label">Luogo</div>
+  <input class="dep-field" id="dep-luogo" type="text" placeholder="es. Circolo Arci Via Roma 12, Pavia" oninput="updatePreview()">
+
+  <div class="dep-form-label">Date e orario</div>
+  <input class="dep-field" id="dep-date" type="text" placeholder="es. 6 e 13 maggio · ore 20:30" oninput="updatePreview()">
+
+  <div class="dep-form-label">Contatto per prenotare</div>
+  <input class="dep-field" id="dep-contatto" type="text" placeholder="es. WhatsApp 333 1234567" oninput="updatePreview()">
+
+  <div class="dep-preview" id="dep-preview" style="display:none">
+    <div class="dep-preview-label">Anteprima</div>
+    <div class="dep-preview-row" id="prev-luogo"></div>
+    <div class="dep-preview-row" id="prev-date"></div>
+    <div class="dep-preview-row" id="prev-contatto"></div>
+  </div>
+
+  <button class="btn-coral" onclick="openDepliant()">Apri depliant compilato ↗</button>
+  <div class="dep-note">Si apre il depliant su GitHub con i tuoi dati già inseriti.<br>Fai screenshot di ogni slide per condividerla su WhatsApp.</div>
+</div>
+
 <!-- BOTTOM NAV -->
 <div class="bottomnav">
   <div class="bnav-item active" id="nav-oggi" onclick="switchTab('oggi')">
@@ -317,6 +361,10 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="bnav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
     <div class="bnav-label">Contatti</div>
   </div>
+  <div class="bnav-item" id="nav-depliant" onclick="switchTab('depliant')">
+    <div class="bnav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h6v6H4z"/><path d="M14 4h6v6h-6z"/><path d="M4 14h6v6H4z"/><path d="M17 17m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"/></svg></div>
+    <div class="bnav-label">Depliant</div>
+  </div>
   <div class="bnav-item" id="nav-diario" onclick="switchTab('diario')">
     <div class="bnav-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
     <div class="bnav-label">Diario</div>
@@ -329,7 +377,14 @@ const LS_CHECKS='cpv_checks';
 const LS_LOG='cpv_log';
 
 function askClaude(p){window.open(CLAUDE_URL+'?q='+encodeURIComponent(p),'_blank');}
-function switchTab(n){document.querySelectorAll('.content').forEach(s=>s.classList.remove('active'));document.querySelectorAll('.bnav-item').forEach(t=>t.classList.remove('active'));document.getElementById('screen-'+n).classList.add('active');document.getElementById('nav-'+n).classList.add('active');window.scrollTo(0,0);}
+function switchTab(n){
+  document.querySelectorAll('.content').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.bnav-item').forEach(t=>{t.classList.remove('active');t.classList.remove('active-coral');});
+  document.getElementById('screen-'+n).classList.add('active');
+  const nav=document.getElementById('nav-'+n);
+  if(n==='depliant'){nav.classList.add('active-coral');}else{nav.classList.add('active');}
+  window.scrollTo(0,0);
+}
 function toggleExp(id){document.getElementById(id).classList.toggle('open');}
 
 // CHECKS con localStorage
@@ -350,6 +405,27 @@ function saveNote(){const txt=document.getElementById('note-txt').value.trim();i
 function sendNoteToC(){const txt=document.getElementById('note-txt').value.trim();const p=txt?'Aggiornamento corso genitori-adolescenti Pavia (Riccardo Gatti): '+txt+'. Prossimo passo concreto?':'Sono Riccardo Gatti, corso genitori-adolescenti Pavia. Dimmi il passo più importante da fare adesso.';if(txt)saveNote();askClaude(p);}
 
 function tick_clock(){const n=new Date();document.getElementById('clock').textContent=n.getHours()+':'+String(n.getMinutes()).padStart(2,'0');}
+
+
+// DEPLIANT
+const DEPLIANT_URL='https://originezen-del.github.io/Agenda-Corso/depliant.html';
+function updatePreview(){
+  const l=document.getElementById('dep-luogo').value.trim();
+  const d=document.getElementById('dep-date').value.trim();
+  const co=document.getElementById('dep-contatto').value.trim();
+  const prev=document.getElementById('dep-preview');
+  if(!l&&!d&&!co){prev.style.display='none';return;}
+  prev.style.display='block';
+  document.getElementById('prev-luogo').innerHTML=l?'<span>📍</span> '+l:'';
+  document.getElementById('prev-date').innerHTML=d?'<span>📅</span> '+d:'';
+  document.getElementById('prev-contatto').innerHTML=co?'<span>✉️</span> '+co:'';
+}
+function openDepliant(){
+  const l=encodeURIComponent(document.getElementById('dep-luogo').value.trim()||'');
+  const d=encodeURIComponent(document.getElementById('dep-date').value.trim()||'');
+  const co=encodeURIComponent(document.getElementById('dep-contatto').value.trim()||'');
+  window.open(DEPLIANT_URL+'?luogo='+l+'&date='+d+'&contatto='+co,'_blank');
+}
 
 // INIT
 loadChecks();
