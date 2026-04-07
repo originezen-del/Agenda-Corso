@@ -694,22 +694,5 @@ body {
   </div>
 </div>
 
-
-<div style="background:#3a1e00;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:2px solid #e07010;">
-  <div style="color:#f5e9c8;font-size:13px;line-height:1.4;flex:1;">
-    Tutto ok? Invia il depliant via WhatsApp.
-  </div>
-  <button onclick="sendWA()" style="background:#e07010;color:white;border:none;border-radius:10px;padding:12px 18px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;font-family:'Source Sans 3',sans-serif;">
-    Invia via WhatsApp ↗
-  </button>
-</div>
-<script>
-function sendWA(){
-  const url=window.location.href;
-  const msg=encodeURIComponent('🍂 *Crescere insieme* — due incontri gratuiti per genitori di adolescenti\n\nApri il depliant per tutti i dettagli:\n'+url+'\n\nSe conosci un genitore a cui potrebbe fare bene, giralo anche a lui.');
-  window.open('https://wa.me/?text='+msg,'_blank');
-}
-</script>
-
 </body>
 </html>
