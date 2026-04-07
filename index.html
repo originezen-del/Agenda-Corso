@@ -343,8 +343,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="dep-preview-row" id="prev-contatto"></div>
   </div>
 
-  <button class="btn-coral" onclick="openDepliant()">Apri depliant ↗</button>
-  <div class="dep-note">Controlla il depliant — poi usa il pulsante WhatsApp in fondo per inviarlo.</div>
+  <button class="btn-coral" onclick="copyDepliantLink()">Copia link depliant</button>
+  <div class="dep-note" id="dep-copied" style="display:none;color:var(--green);font-weight:500;">Link copiato — incollalo in Safari per aprire e condividere.</div>
+  <div class="dep-note" id="dep-hint">Copia il link, aprilo in Safari, poi usa Condividi di iOS per salvarlo o inviarlo via WhatsApp.</div>
 </div>
 
 <!-- BOTTOM NAV -->
@@ -425,6 +426,22 @@ function openDepliant(){
   const d=encodeURIComponent(document.getElementById('dep-date').value.trim()||'');
   const co=encodeURIComponent(document.getElementById('dep-contatto').value.trim()||'');
   window.open(DEPLIANT_URL+'?luogo='+l+'&date='+d+'&contatto='+co,'_blank');
+}
+function copyDepliantLink(){
+  const l=encodeURIComponent(document.getElementById('dep-luogo').value.trim()||'');
+  const d=encodeURIComponent(document.getElementById('dep-date').value.trim()||'');
+  const co=encodeURIComponent(document.getElementById('dep-contatto').value.trim()||'');
+  const link=DEPLIANT_URL+'?luogo='+l+'&date='+d+'&contatto='+co;
+  navigator.clipboard.writeText(link).then(function(){
+    document.getElementById('dep-copied').style.display='block';
+    document.getElementById('dep-hint').style.display='none';
+    setTimeout(function(){
+      document.getElementById('dep-copied').style.display='none';
+      document.getElementById('dep-hint').style.display='block';
+    },4000);
+  }).catch(function(){
+    prompt('Copia questo link e aprilo in Safari:',link);
+  });
 }
 function shareWhatsApp(){
   const l=encodeURIComponent(document.getElementById('dep-luogo').value.trim()||'');
