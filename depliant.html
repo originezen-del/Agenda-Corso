@@ -537,10 +537,8 @@ body {
     display: block;
     position: relative;
   }
-  .slide:not(:last-child) {
-    page-break-after: always;
-    break-after: page;
-  }
+  .slide { page-break-after: always; break-after: page; }
+  .slide.last { page-break-after: avoid; break-after: avoid; }
   .slide * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 }
 
@@ -667,7 +665,7 @@ body {
 </div>
 
 <!-- ━━━ SLIDE 4 — INFO + PRENOTAZIONE ━━━ -->
-<div class="slide" id="s4">
+<div class="slide last" id="s4">
   <div class="bg-warm"></div>
   <div class="content">
 
