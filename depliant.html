@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Depliant WhatsApp — Crescere insieme</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@300;400;600;700&display=swap');
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #d4880a;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+.istruzioni {
+  background: white;
+  border-radius: 10px;
+  padding: 16px 24px;
+  max-width: 460px;
+  width: 100%;
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* ogni slide è 1080×1920 scalata a 360×640 per visualizzazione */
+.slide {
+  width: 360px;
+  height: 640px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(80,40,0,0.22);
+  flex-shrink: 0;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SLIDE 1 — COPERTINA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#s1 {
+  background: #f5d070;
+}
+
+#s1 .bg-shape-1 {
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: #e07010;
+  opacity: 0.22;
+}
+#s1 .bg-shape-2 {
+  position: absolute;
+  bottom: 40px; left: -80px;
+  width: 320px; height: 320px;
+  border-radius: 50%;
+  background: #c05010;
+  opacity: 0.15;
+}
+#s1 .bg-shape-3 {
+  position: absolute;
+  top: 200px; left: 60px;
+  width: 180px; height: 180px;
+  border-radius: 50%;
+  background: #e09020;
+  opacity: 0.13;
+}
+
+#s1 .content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 36px;
+}
+
+#s1 .tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #8b4400;
+  background: rgba(200,80,0,0.15);
+  border: 1.5px solid rgba(200,80,0,0.4);
+  padding: 5px 14px;
+  border-radius: 30px;
+  width: fit-content;
+}
+
+#s1 .middle {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px 0;
+}
+
+#s1 .eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #b85000;
+  margin-bottom: 14px;
+}
+
+#s1 .title {
+  font-family: 'Playfair Display', serif;
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1.0;
+  color: #3a1e00;
+  margin-bottom: 20px;
+}
+
+#s1 .subtitle {
+  font-size: 16px;
+  font-weight: 300;
+  color: #7a3800;
+  line-height: 1.6;
+  max-width: 260px;
+}
+
+#s1 .bottom {
+  border-top: 1.5px solid rgba(200,112,32,0.25);
+  padding-top: 18px;
+}
+
+#s1 .for-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #8b4400;
+  margin-bottom: 7px;
+}
+
+#s1 .for-text {
+  font-size: 15px;
+  color: #3a1e00;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SLIDE 2 — PROGRAMMA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#s2 {
+  background: #fde89a;
+}
+
+#s2 .accent-bar {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, #e87010, #c04000);
+}
+
+#s2 .content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 40px 32px 36px;
+  display: flex;
+  flex-direction: column;
+}
+
+#s2 .header {
+  margin-bottom: 28px;
+}
+
+#s2 .header-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b84800;
+  margin-bottom: 6px;
+}
+
+#s2 .header-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  color: #3a1e00;
+  line-height: 1.2;
+}
+
+.inc-block {
+  background: #fef3d0;
+  border: 1.5px solid rgba(220,112,16,0.3);
+  border-left: 4px solid #e07010;
+  border-radius: 10px;
+  padding: 18px 18px 18px 20px;
+  margin-bottom: 16px;
+}
+
+.inc-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.inc-num {
+  width: 32px; height: 32px;
+  min-width: 32px;
+  background: #e07010;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: white;
+}
+
+.inc-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  color: #3a1e00;
+  line-height: 1.25;
+}
+
+.inc-items {
+  list-style: none;
+  padding: 0;
+}
+
+.inc-items li {
+  font-size: 12.5px;
+  color: #6a3000;
+  padding: 3px 0 3px 16px;
+  position: relative;
+  line-height: 1.45;
+  font-weight: 300;
+}
+
+.inc-items li::before {
+  content: '›';
+  position: absolute;
+  left: 0;
+  color: #e07010;
+  font-weight: 700;
+  font-size: 14px;
+}
+
+#s2 .footer-note {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid rgba(232,160,32,0.25);
+  font-size: 11px;
+  color: #8b4000;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SLIDE 3 — CHI È + CITAZIONE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#s3 {
+  background: #fbd870;
+}
+
+#s3 .deco-circle {
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  border: 30px solid rgba(232,160,32,0.12);
+}
+
+#s3 .deco-circle-2 {
+  position: absolute;
+  bottom: 100px; left: -50px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  border: 20px solid rgba(200,80,0,0.12);
+}
+
+#s3 .content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 40px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+#s3 .section-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b84800;
+  margin-bottom: 16px;
+}
+
+#s3 .pci-item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 13px;
+  align-items: flex-start;
+}
+
+#s3 .pci-dot {
+  width: 7px; height: 7px;
+  min-width: 7px;
+  border-radius: 50%;
+  background: #e07010;
+  margin-top: 6px;
+}
+
+#s3 .pci-text {
+  font-size: 14px;
+  color: #3a1e00;
+  line-height: 1.5;
+  font-weight: 400;
+}
+
+#s3 .divider {
+  height: 1.5px;
+  background: rgba(220,112,16,0.3);
+  margin: 22px 0;
+}
+
+#s3 .cit-box {
+  background: #3a1e00;
+  border-radius: 12px;
+  padding: 22px 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#s3 .cit-virgolette {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: #e07010;
+  line-height: 0.7;
+  margin-bottom: 12px;
+}
+
+#s3 .cit-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  color: #f5e9c8;
+  line-height: 1.6;
+  font-style: italic;
+  margin-bottom: 16px;
+}
+
+#s3 .cit-fonte {
+  font-size: 11px;
+  color: rgba(245,233,200,0.5);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   SLIDE 4 — INFO + PRENOTAZIONE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#s4 {
+  background: #3a1e00;
+}
+
+#s4 .bg-warm {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 50%;
+  background: #f5d070;
+}
+
+#s4 .content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+#s4 .top-section {
+  background: white;
+  border-radius: 14px;
+  padding: 24px 22px;
+  border: 1.5px solid rgba(220,112,16,0.3);
+}
+
+#s4 .top-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #b84800;
+  margin-bottom: 16px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.info-icon {
+  width: 30px; height: 30px;
+  min-width: 30px;
+  background: #fde8b0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.info-content {}
+.info-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #8b4400;
+  margin-bottom: 2px;
+}
+.info-value {
+  font-size: 14px;
+  color: #3a1e00;
+  font-weight: 600;
+}
+.info-value.placeholder {
+  color: #c0a070;
+  font-weight: 400;
+  font-style: italic;
+}
+
+#s4 .prenotazione-box {
+  background: #e07010;
+  border-radius: 14px;
+  padding: 22px 22px;
+}
+
+#s4 .pren-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(58,30,0,0.6);
+  margin-bottom: 10px;
+}
+
+#s4 .pren-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  color: #3a1e00;
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+
+#s4 .pren-text {
+  font-size: 12.5px;
+  color: rgba(58,30,0,0.75);
+  line-height: 1.55;
+  margin-bottom: 16px;
+  font-weight: 300;
+}
+
+#s4 .pren-cta {
+  background: #3a1e00;
+  color: #f5e9c8;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+#s4 .conduce {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+#s4 .conduce-avatar {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(248,200,80,0.15);
+  border: 1.5px solid rgba(248,200,80,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #f5e9c8;
+  font-family: 'Source Sans 3', sans-serif;
+}
+
+#s4 .conduce-info {}
+#s4 .conduce-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #f5e9c8;
+}
+#s4 .conduce-role {
+  font-size: 11px;
+  color: rgba(245,233,200,0.5);
+}
+
+@media print {
+  body { background: white; padding: 10px; gap: 20px; }
+  .istruzioni { display: none; }
+  .slide { box-shadow: none; page-break-after: always; }
+}
+</style>
+</head>
+<body>
+
+<script>
+(function(){
+  const p=new URLSearchParams(window.location.search);
+  const luogo=decodeURIComponent(p.get('luogo')||'');
+  const date=decodeURIComponent(p.get('date')||'');
+  const contatto=decodeURIComponent(p.get('contatto')||'');
+  document.addEventListener('DOMContentLoaded',function(){
+    if(luogo){
+      var el=document.getElementById('val-luogo');
+      if(el){el.textContent=luogo;el.classList.remove('placeholder');}
+      var mapsEl=document.getElementById('maps-link');
+      if(mapsEl){mapsEl.href='https://maps.apple.com/?q='+encodeURIComponent(luogo);mapsEl.style.display='inline-block';}
+    }
+    if(date){var el=document.getElementById('val-date');if(el){el.textContent=date;el.classList.remove('placeholder');}}
+    if(contatto){var el=document.getElementById('val-contatto');if(el){el.textContent=contatto;el.classList.remove('placeholder');}var el2=document.getElementById('val-contatto-cta');if(el2){el2.textContent='Scrivi per prenotare → '+contatto;}}
+  });
+})();
+</script>
+
+
+<!-- ━━━ SLIDE 1 — COPERTINA ━━━ -->
+<div class="slide" id="s1">
+  <div class="bg-shape-1"></div>
+  <div class="bg-shape-2"></div>
+  <div class="bg-shape-3"></div>
+  <div class="content">
+    <div class="tag">Due incontri gratuiti · Pavia</div>
+    <div class="middle">
+      <div class="eyebrow">Un percorso per genitori</div>
+      <div class="title">Crescere<br>insieme</div>
+      <div class="subtitle">Ritrovare il filo con tuo figlio adolescente — in modo concreto, senza teorie</div>
+    </div>
+    <div class="bottom">
+      <div class="for-label">Per genitori di ragazzi</div>
+      <div class="for-text">tra gli 11 e i 18 anni<br>che vogliono capire e agire</div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━ SLIDE 2 — PROGRAMMA ━━━ -->
+<div class="slide" id="s2">
+  <div class="accent-bar"></div>
+  <div class="content">
+    <div class="header">
+      <div class="header-label">Il programma</div>
+      <div class="header-title">Due incontri da<br>90 minuti ciascuno</div>
+    </div>
+
+    <div class="inc-block">
+      <div class="inc-header">
+        <div class="inc-num">1</div>
+        <div class="inc-title">Mio figlio non lo<br>riconosco più</div>
+      </div>
+      <ul class="inc-items">
+        <li>Capire cosa succede nel cervello di un adolescente</li>
+        <li>Riconoscere le emozioni sotto ai conflitti</li>
+        <li>Esercizio: la lettera che non spedirò mai</li>
+      </ul>
+    </div>
+
+    <div class="inc-block">
+      <div class="inc-header">
+        <div class="inc-num">2</div>
+        <div class="inc-title">Parliamo... ma<br>non ci sentiamo</div>
+      </div>
+      <ul class="inc-items">
+        <li>Cosa c'è davvero sotto a ogni litigio</li>
+        <li>Un linguaggio diverso per dire le cose difficili</li>
+        <li>Esercizio: riscrivere la frase che ripeto sempre</li>
+      </ul>
+    </div>
+
+    <div class="footer-note">Esperienziale · piccolo gruppo · niente lezioni frontali</div>
+  </div>
+</div>
+
+<!-- ━━━ SLIDE 3 — CHI È + CITAZIONE ━━━ -->
+<div class="slide" id="s3">
+  <div class="deco-circle"></div>
+  <div class="deco-circle-2"></div>
+  <div class="content">
+    <div>
+      <div class="section-label">Questo spazio è per te se...</div>
+
+      <div class="pci-item">
+        <div class="pci-dot"></div>
+        <div class="pci-text">Senti che il dialogo con tuo figlio si è incrinato</div>
+      </div>
+      <div class="pci-item">
+        <div class="pci-dot"></div>
+        <div class="pci-text">I conflitti si ripetono sempre uguali e non sai come uscirne</div>
+      </div>
+      <div class="pci-item">
+        <div class="pci-dot"></div>
+        <div class="pci-text">Vuoi strumenti concreti, non teorie astratte</div>
+      </div>
+      <div class="pci-item">
+        <div class="pci-dot"></div>
+        <div class="pci-text">Cerchi uno spazio dove parlarne con altri genitori</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="cit-box">
+      <div class="cit-virgolette">"</div>
+      <div class="cit-text">Certi argomenti mi hanno colto impreparato — ma ho capito che posso fare qualcosa di diverso.</div>
+      <div class="cit-fonte">— partecipante</div>
+    </div>
+  </div>
+</div>
+
+<!-- ━━━ SLIDE 4 — INFO + PRENOTAZIONE ━━━ -->
+<div class="slide" id="s4">
+  <div class="bg-warm"></div>
+  <div class="content">
+
+    <div class="top-section">
+      <div class="top-label">Dove e quando</div>
+
+      <div class="info-row">
+        <div class="info-icon">📍</div>
+        <div class="info-content">
+          <div class="info-label">Luogo</div>
+          <div class="info-value placeholder" id="val-luogo">da definire</div>
+          <a id="maps-link" href="#" style="display:none;font-size:11px;color:#e07010;margin-top:3px;display:none;" onclick="window.open(this.href);return false;">Apri in Maps →</a>
+        </div>
+      </div>
+
+      <div class="info-row">
+        <div class="info-icon">📅</div>
+        <div class="info-content">
+          <div class="info-label">Date</div>
+          <div class="info-value placeholder" id="val-date">da definire</div>
+        </div>
+      </div>
+
+      <div class="info-row" style="margin-bottom:0">
+        <div class="info-icon">⏱</div>
+        <div class="info-content">
+          <div class="info-label">Durata</div>
+          <div class="info-value">90 minuti · max 12 partecipanti</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prenotazione-box">
+      <div class="pren-label">Partecipazione</div>
+      <div class="pren-title">Gratuito · prenotazione obbligatoria</div>
+      <div class="pren-text">I posti sono limitati. Invia la tua richiesta — riceverai conferma non appena il tuo posto sarà assegnato.</div>
+      <div class="pren-cta" id="val-contatto-cta">Scrivi per prenotare → [contatto]</div>
+    </div>
+
+    <div class="conduce">
+      <div class="conduce-avatar">RG</div>
+      <div class="conduce-info">
+        <div class="conduce-name">Riccardo Gatti</div>
+        <div class="conduce-role">Formatore · relazioni educative</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
