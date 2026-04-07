@@ -343,8 +343,8 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
     <div class="dep-preview-row" id="prev-contatto"></div>
   </div>
 
-  <button class="btn-coral" onclick="openDepliant()">Apri depliant compilato ↗</button>
-  <div class="dep-note">Si apre il depliant su GitHub con i tuoi dati già inseriti.<br>Fai screenshot di ogni slide per condividerla su WhatsApp.</div>
+  <button class="btn-coral" onclick="shareWhatsApp()">Condividi su WhatsApp ↗</button>
+  <div class="dep-note">Apre WhatsApp con il link del depliant già compilato.<br>Il destinatario lo apre e vede le 4 slide con i tuoi dati.</div>
 </div>
 
 <!-- BOTTOM NAV -->
@@ -425,6 +425,14 @@ function openDepliant(){
   const d=encodeURIComponent(document.getElementById('dep-date').value.trim()||'');
   const co=encodeURIComponent(document.getElementById('dep-contatto').value.trim()||'');
   window.open(DEPLIANT_URL+'?luogo='+l+'&date='+d+'&contatto='+co,'_blank');
+}
+function shareWhatsApp(){
+  const l=encodeURIComponent(document.getElementById('dep-luogo').value.trim()||'');
+  const d=encodeURIComponent(document.getElementById('dep-date').value.trim()||'');
+  const co=encodeURIComponent(document.getElementById('dep-contatto').value.trim()||'');
+  const link=DEPLIANT_URL+'?luogo='+l+'&date='+d+'&contatto='+co;
+  const msg=encodeURIComponent('🍂 *Crescere insieme* — due incontri gratuiti per genitori di adolescenti\n\nApri il depliant per tutti i dettagli:\n'+link+'\n\nSe conosci un genitore a cui potrebbe fare bene, giralo anche a lui.');
+  window.open('https://wa.me/?text='+msg,'_blank');
 }
 
 // INIT
